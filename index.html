@@ -1,43 +1,284 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-		/>
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presentación Electrónica</title>
+  <link rel="stylesheet" href="../dist/reveal.css">
+  <link rel="stylesheet" href="../dist/theme/black.css">
+  <link rel="stylesheet" href="mi_presentacion/css/style.css">
+</head>
+<body>
+  <div id="circuit-layer"></div>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h1>Presentación Electrónica</h1>
+      </section>
 
-		<title>reveal.js</title>
+      <section>
+        <h2>Potencia en Circuitos CA</h2>
+        <div class="card">
+          <p>
+            En corriente alterna, la potencia depende del voltaje eficaz,
+            la corriente eficaz y el ángulo de desfase φ entre ambos.
+            Se distinguen tres componentes:
+          </p>
+          <ul>
+            <li><strong>Potencia Activa (P)</strong>: energía realmente consumida por la carga, expresada en vatios (W).</li>
+            <li><strong>Potencia Reactiva (Q)</strong>: energía intercambiada entre la fuente y los elementos almacenadores (L, C), expresada en VAR.</li>
+            <li><strong>Potencia Aparente (S)</strong>: combinación vectorial de P y Q; representa la carga total que soporta el sistema, expresada en VA.</li>
+          </ul>
+        </div>
+      </section>
 
-		<link rel="stylesheet" href="dist/reset.css" />
-		<link rel="stylesheet" href="dist/reveal.css" />
-		<link rel="stylesheet" href="dist/theme/black.css" />
+      <section>
+        <h2>Potencia Activa</h2>
+        <div class="card">
+          <p>
+            La potencia activa es la energía por unidad de tiempo que el circuito convierte en trabajo útil (calor, movimiento, luz).
+            Su expresión general es:
+          </p>
+          <p>
+            P = V<sub>rms</sub> · I<sub>rms</sub> · cos(φ)
+          </p>
+          <p>
+            donde cos(φ) es el <strong>factor de potencia</strong>: varía entre 0 y 1,
+            siendo 1 el caso puramente resistivo y 0 el puramente reactivo.
+            Ingrese los valores para calcular la potencia activa.
+          </p>
+        </div>
+        <form id="calc-form">
+          <input type="number" id="vrms" placeholder="Vrms (V)">
+          <input type="number" id="irms" placeholder="Irms (A)">
+          <input type="number" id="cosphi" placeholder="cos φ  (0 – 1)">
+          <button type="submit">Calcular</button>
+        </form>
+        <div class="card">
+          <p id="resultado">Resultado:</p>
+        </div>
+      </section>
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="dist/plugin/highlight/monokai.css" />
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+      <section>
+        <h2>Circuito RC</h2>
+        <div class="card">
+          <p>
+            Un circuito RC está formado por:
+          </p>
+          <ul>
+            <li><strong>Resistencia (R)</strong>: disipa energía en forma de calor.</li>
+            <li><strong>Capacitor (C)</strong>: almacena energía en el campo eléctrico entre sus placas.</li>
+          </ul>
+          <p>
+            La rapidez con que el capacitor se carga o descarga queda determinada
+            por la <strong>constante de tiempo</strong>:
+          </p>
+          <p>
+            τ = R · C
+          </p>
+          <p>
+            A t = τ, el capacitor ha alcanzado el 63.2 % de su valor final.
+            La dinámica del voltaje en el capacitor obedece la ecuación diferencial:
+          </p>
+          <p>
+            R·C · (dV<sub>c</sub>/dt) + V<sub>c</sub> = V(t)
+          </p>
+        </div>
+      </section>
 
-		<script src="dist/reveal.js"></script>
-		<script src="dist/plugin/notes.js"></script>
-		<script src="dist/plugin/markdown.js"></script>
-		<script src="dist/plugin/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+      <section>
+        <h2>Calculadora RC</h2>
+        <div class="card">
+          <p>
+            Calcule la constante de tiempo τ del circuito RC:
+          </p>
+          <p>
+            τ = R · C
+          </p>
+        </div>
+        <form id="rc-form">
+          <input type="number" id="r_rc" placeholder="Resistencia R (Ω)">
+          <input type="number" id="c_rc" placeholder="Capacitancia C (F)" step="any">
+          <button type="submit">Calcular τ</button>
+        </form>
+        <div class="card">
+          <p id="rc-resultado">Resultado:</p>
+        </div>
+      </section>
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
-			});
-		</script>
-	</body>
+      <section>
+        <h2>Ecuación Diferencial RC</h2>
+        <div class="card">
+          <p>
+            El voltaje en el capacitor durante la carga, partiendo de V<sub>c</sub>(0) = 0, es:
+          </p>
+          <p>
+            V<sub>c</sub>(t) = V · (1 − e<sup>−t / RC</sup>)
+          </p>
+          <p>
+            Ingrese los parámetros para obtener V<sub>c</sub> en un instante t dado.
+          </p>
+        </div>
+        <form id="rc-eq-form">
+          <input type="number" id="v_rc_t"  placeholder="Voltaje de alimentación V (V)">
+          <input type="number" id="r_rc_eq" placeholder="Resistencia R (Ω)">
+          <input type="number" id="c_rc_eq" placeholder="Capacitancia C (F)">
+          <input type="number" id="t_rc_eq" placeholder="Tiempo t (s)">
+          <button type="submit">Calcular Vc(t)</button>
+        </form>
+        <div class="card">
+          <p id="rc-eq-resultado">Resultado:</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Circuito RL</h2>
+        <div class="card">
+          <ul>
+            <li><strong>Resistencia (R)</strong>: limita la corriente y disipa energía.</li>
+            <li><strong>Inductor (L)</strong>: almacena energía en el campo magnético que rodea al bobinado.</li>
+          </ul>
+          <p>
+            El inductor se opone a los cambios bruscos de corriente.
+            Su <strong>constante de tiempo</strong> es:
+          </p>
+          <p>
+            τ = L / R
+          </p>
+          <p>
+            A t = τ, la corriente alcanza el 63.2 % de su valor de régimen permanente.
+            La ecuación diferencial que describe la corriente es:
+          </p>
+          <p>
+            L · (di/dt) + R · i = V(t)
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Calculadora RL</h2>
+        <div class="card">
+          <p>
+            Calcule la constante de tiempo τ del circuito RL:
+          </p>
+          <p>
+            τ = L / R
+          </p>
+        </div>
+        <form id="rl-form">
+          <input type="number" id="l_rl" placeholder="Inductancia L (H)" step="any">
+          <input type="number" id="r_rl" placeholder="Resistencia R (Ω)" step="any">
+          <button type="submit">Calcular τ</button>
+        </form>
+        <div class="card">
+          <p id="rl-resultado">Resultado:</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Ecuación Diferencial RL</h2>
+        <div class="card">
+          <p>
+            La corriente en el inductor durante la conexión, partiendo de I(0) = 0, es:
+          </p>
+          <p>
+            I(t) = (V / R) · (1 − e<sup>−Rt / L</sup>)
+          </p>
+          <p>
+            Ingrese los parámetros para obtener I en un instante t dado.
+          </p>
+        </div>
+        <form id="rl-eq-form">
+          <input type="number" id="v_rl_t"  placeholder="Voltaje de alimentación V (V)">
+          <input type="number" id="r_rl_eq" placeholder="Resistencia R (Ω)">
+          <input type="number" id="l_rl_eq" placeholder="Inductancia L (H)">
+          <input type="number" id="t_rl_eq" placeholder="Tiempo t (s)">
+          <button type="submit">Calcular I(t)</button>
+        </form>
+        <div class="card">
+          <p id="rl-eq-resultado">Resultado:</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Circuito RLC</h2>
+        <div class="card">
+          <ul>
+            <li><strong>Resistencia (R)</strong>: amortigua las oscilaciones.</li>
+            <li><strong>Inductor (L)</strong>: almacena energía magnética.</li>
+            <li><strong>Capacitor (C)</strong>: almacena energía eléctrica.</li>
+          </ul>
+          <p>
+            La interacción entre L y C produce el fenómeno de <strong>resonancia</strong>,
+            donde la impedancia es mínima y la corriente es máxima.
+            La frecuencia de resonancia es:
+          </p>
+          <p>
+            f<sub>0</sub> = 1 / (2π · √(L·C))
+          </p>
+          <p>
+            La ecuación diferencial que rige la carga q en el capacitor es:
+          </p>
+          <p>
+            L · (d²q/dt²) + R · (dq/dt) + (1/C) · q = V(t)
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Frecuencia de Resonancia</h2>
+        <div class="card">
+          <p>
+            Calcule la frecuencia a la que el circuito RLC serie entra en resonancia:
+          </p>
+          <p>
+            f<sub>0</sub> = 1 / (2π · √(L·C))
+          </p>
+        </div>
+        <form id="rlc-form">
+          <input type="number" id="l_rlc" placeholder="Inductancia L (H)" step="any">
+          <input type="number" id="c_rlc" placeholder="Capacitancia C (F)" step="any">
+          <button type="submit">Calcular f₀</button>
+        </form>
+        <div class="card">
+          <p id="rlc-resultado">Resultado:</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Ecuación Diferencial RLC</h2>
+        <div class="card">
+          <p>
+            La respuesta natural de un circuito RLC serie (sin fuente) es:
+          </p>
+          <p>
+            L · (d²q/dt²) + R · (dq/dt) + (1/C) · q = 0
+          </p>
+          <p>
+            El tipo de respuesta depende del <strong>discriminante</strong> (α² − ω₀²),
+            donde α = R/(2L) y ω₀ = 1/√(LC):
+          </p>
+          <ul>
+            <li><strong>Sobreamortiguado</strong> (α &gt; ω₀): decaimiento exponencial sin oscilación.</li>
+            <li><strong>Críticamente amortiguado</strong> (α = ω₀): retorno más rápido al equilibrio sin oscilar.</li>
+            <li><strong>Subamortiguado</strong> (α &lt; ω₀): oscilación amortiguada exponencialmente.</li>
+          </ul>
+        </div>
+        <form id="rlc-edo-form">
+          <input type="number" id="edo_r" placeholder="Resistencia R (Ω)" step="any">
+          <input type="number" id="edo_l" placeholder="Inductancia L (H)" step="any">
+          <input type="number" id="edo_c" placeholder="Capacitancia C (F)" step="any">
+          <button type="submit">Analizar</button>
+        </form>
+        <div class="card">
+          <p id="rlc-edo-resultado">Resultado:</p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+  <script src="../dist/reveal.js"></script>
+  <script src="mi_presentacion/js/app.js"></script>
+  <script src="mi_presentacion/js/calculos.js"></script>
+</body>
 </html>
