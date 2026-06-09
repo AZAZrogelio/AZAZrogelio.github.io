@@ -77,6 +77,39 @@
           </p>
         </div>
       </section>
+      <!-- luna -->
+      <section>
+        <h2>Elementos R, L, C e Impedancia</h2>
+        <div class="card">
+          <p>
+            Los tres elementos en CA: cada elemento se opone a la corriente de forma distinta según la frecuencia de la señal.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Propiedades R, L, C</h2>
+        <div class="card">
+          <ul>
+            <li><strong>Elemento: Resistor (R)</strong> <br> Oposición: R constante <br> Desfase V–I: 0° (en fase) <br> Energía: Disipa (calor)</li>
+            <li><strong>Elemento: Inductor (L)</strong> <br> Oposición: X_L = ωL ↑ con f <br> Desfase V–I: V adelanta 90° <br> Energía: Almacena (campo mag.)</li>
+            <li><strong>Elemento: Capacitor (C)</strong> <br> Oposición: X_C = 1/ωC ↓ con f <br> Desfase V–I: I adelanta 90° <br> Energía: Almacena (campo eléc.)</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>Impedancia</h2>
+        <div class="card">
+          <p>
+            La impedancia Z generaliza la resistencia para CA. Unifica resistencia y reactancias en un solo número complejo, permitiendo analizar cualquier circuito con una sola expresión.
+          </p>
+          <p>Z = R + j(X_L − X_C)</p>
+          <p>|Z| = √(R² + X²)</p>
+          <p>φ = arctan(X/R) → indica si el circuito es inductivo, capacitivo o resistivo puro</p>
+        </div>
+      </section>
+
       <!-- Quetzal -->
       <section>
         <h2>Potencia en Circuitos CA</h2>
@@ -335,6 +368,48 @@
         </form>
         <div class="card">
           <p id="rlc-edo-resultado">Resultado:</p>
+        </div>
+      </section>
+<!-- Luna -->
+            <section>
+        <h2>Circuitos en Serie y Paralelo en CA</h2>
+      </section>
+
+      <section>
+        <h2>Diferencias Serie y Paralelo</h2>
+        <div class="card">
+          <p>La diferencia fundamental es qué magnitud se conserva en el circuito.</p>
+          <table>
+            <thead>
+              <tr>
+                <th>Característica</th>
+                <th>Serie</th>
+                <th>Paralelo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Conserva</strong></td>
+                <td>Corriente</td>
+                <td>Voltaje</td>
+              </tr>
+              <tr>
+                <td><strong>Impedancia total</strong></td>
+                <td>Z_T = R + j(X_L − X_C)</td>
+                <td>Y_T = 1/Z_R + 1/Z_L + 1/Z_C</td>
+              </tr>
+              <tr>
+                <td><strong>Resonancia (X_L = X_C)</strong></td>
+                <td>Z mínima, I máxima</td>
+                <td>Z máxima, I mínima</td>
+              </tr>
+              <tr>
+                <td><strong>Aplicación</strong></td>
+                <td>Filtros, sintonización</td>
+                <td>Distribución de energía</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
       <!-- Beymar -->
