@@ -337,6 +337,148 @@
           <p id="rlc-edo-resultado">Resultado:</p>
         </div>
       </section>
+      <!-- Beymar -->
+      <section>
+        <h2>6.9 TRANSFORMACIONES EN FRECUENCIAS</h2>
+        <div class="card">
+          <p>
+            A continuación, explicaré cómo transformar un filtro paso-bajas normalizado en otros tipos de filtros. Los puntos que vamos a ver son estos: primero, la transformación a paso-altas; segundo, la transformación a paso-banda; tercero, la transformación a rechaza-banda; cuarto, las funciones de transferencia de cada filtro; y quinto, el escalamiento de frecuencia e impedancia para diseñar filtros reales. Al final, resumo todo en una guía práctica de 5 pasos.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>1. TRANSFORMACIÓN PASA-BAJAS A PASA-ALTAS</h2>
+        <div class="card">
+          <p><strong>Mapeo matemático</strong></p>
+          <p>
+            s = 1/p (normalizado)<br>
+            s = ωc²/p
+          </p>
+          <p><strong>Efecto en componentes</strong></p>
+          <ul>
+            <li>Una bobina (L) en el prototipo se convierte en un condensador (C) en el filtro real.</li>
+            <li>Un condensador (C) en el prototipo se convierte en una bobina (L) en el filtro real.</li>
+            <li>Las resistencias no se modifican.</li>
+          </ul>
+          <p><strong>Fórmulas de cálculo para componentes reales</strong></p>
+          <p>
+            C = 1/(Ln·ωc)<br>
+            L = 1/(Cn·ωc)<br>
+            ωc = 2π·fc
+          </p>
+          <p><strong>Aspecto relevante</strong></p>
+          <p>
+            Intercambia completamente el papel de bobinas y condensadores. Un filtro paso-altas se obtiene simplemente aplicando este mapeo al prototipo paso-bajas.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>2. TRANSFORMACIÓN PASA-BAJAS A PASA-BANDA</h2>
+        <div class="card">
+          <p><strong>Mapeo matemático</strong></p>
+          <p>
+            s = (1/BW)·((p² + ω₀²)/p)
+          </p>
+          <p><strong>Parámetros clave</strong></p>
+          <p>
+            ω₀ = √(ω₁·ω₂)<br>
+            BW = ω₂ - ω₁<br>
+            Q = ω₀ / BW
+          </p>
+          <p><strong>Efecto en componentes</strong></p>
+          <ul>
+            <li>Una bobina (L) se transforma en un circuito LC serie.</li>
+            <li>Un condensador (C) se transforma en un circuito LC paralelo.</li>
+          </ul>
+          <p><strong>Aspecto relevante</strong></p>
+          <p>
+            Esta transformación duplica la respuesta del filtro, creando una banda de paso alrededor de ω₀ con ancho BW.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>3. TRANSFORMACIÓN PASA-BAJAS A RECHAZA-BANDA</h2>
+        <div class="card">
+          <p><strong>Mapeo matemático</strong></p>
+          <p>
+            s = -Δω·(p/(p² + ω₀²))
+          </p>
+          <p><strong>Parámetros clave</strong></p>
+          <p>
+            ω₀ = √(ω₁·ω₂)<br>
+            Δω = ω₂ - ω₁
+          </p>
+          <p><strong>Efecto en componentes</strong></p>
+          <ul>
+            <li>Una bobina (L) en el prototipo se transforma en un circuito LC paralelo.</li>
+            <li>Un condensador (C) en el prototipo se transforma en un circuito LC serie.</li>
+          </ul>
+          <p><strong>Aplicación típica</strong></p>
+          <p>
+            Eliminar frecuencias no deseadas, como el ruido de 60 Hz de la línea de CA.
+          </p>
+          <p><strong>Aspecto relevante</strong></p>
+          <p>
+            Esta transformación es la opuesta a pasa-banda: en lugar de dejar pasar una banda, la rechaza (filtro notch).
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>4. FUNCIÓN DE TRANSFERENCIA Y TABLA DE TRANSFORMACIONES</h2>
+        <div class="card">
+          <p>
+            <strong>Filtro pasa-bajas</strong><br>
+            T(s) = H / (s² + (ω₀/Q)s + ω₀²)
+          </p>
+          <p>
+            <strong>Filtro pasa-altas</strong><br>
+            T(s) = H·s² / (s² + (ω₀/Q)s + ω₀²)
+          </p>
+          <p>
+            <strong>Filtro pasa-banda</strong><br>
+            T(s) = H·(ω₀/Q)s / (s² + (ω₀/Q)s + ω₀²)
+          </p>
+          <p>
+            <strong>Filtro rechaza-banda</strong><br>
+            T(s) = H·(s² + ω₀²) / (s² + (ω₀/Q)s + ω₀²)
+          </p>
+          <p><strong>Aspecto relevante</strong></p>
+          <p>
+            Esta tabla muestra cómo se modifica la función de transferencia al aplicar cada transformación.
+          </p>
+          <ul>
+            <li>En pasa-altas hay ceros en DC.</li>
+            <li>En rechaza-banda hay ceros en ω₀.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>5. ESCALAMIENTO DE FRECUENCIA E IMPEDANCIA (DESNORMALIZACIÓN)</h2>
+        <div class="card">
+          <p><strong>Transformación pasa-bajas a pasa-bajas real</strong></p>
+          <p>
+            s' = s·kω<br>
+            kω = ωc / ωn
+          </p>
+          <p><strong>Fórmulas de escalamiento de componentes</strong></p>
+          <p>
+            R → R·kz<br>
+            C → C/(kz·kω)<br>
+            L → (L·kz)/kω<br>
+            L = Ln / ωc<br>
+            C = Cn / ωc
+          </p>
+          <p><strong>Aspecto relevante</strong></p>
+          <p>
+            Esta transformación es la base que permite pasar del filtro prototipo normalizado (1 rad/s, 1 Ω) a un filtro real con cualquier frecuencia de corte e impedancia.
+          </p>
+        </div>
+      </section>
     </div>
   </div>
   <script src="../dist/reveal.js"></script>
