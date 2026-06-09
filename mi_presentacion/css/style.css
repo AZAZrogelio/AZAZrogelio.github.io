@@ -1,0 +1,578 @@
+:root{
+    --cyan:#00ffff;
+    --blue:#0088ff;
+    --purple:#9d00ff;
+    --dark:#02030a;
+}
+
+body{
+
+    background:
+    radial-gradient(circle at center,
+    #071327 0%,
+    #03040a 60%,
+    #000000 100%);
+
+    overflow:hidden;
+}
+
+/* REJILLA FUTURISTA */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    background-image:
+    linear-gradient(
+        rgba(0,255,255,.15) 1px,
+        transparent 1px
+    ),
+    linear-gradient(
+        90deg,
+        rgba(0,255,255,.15) 1px,
+        transparent 1px
+    );
+
+    background-size:50px 50px;
+
+    opacity:.25;
+
+    pointer-events:none;
+}
+
+/* BRILLO AMBIENTAL */
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    width:150vw;
+    height:150vh;
+
+    top:-25vh;
+    left:-25vw;
+
+    background:
+    radial-gradient(
+    circle,
+    rgba(0,255,255,.15),
+    transparent 70%);
+
+    animation:pulse 8s infinite;
+}
+
+@keyframes pulse{
+
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.15);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+
+}
+
+.reveal{
+
+    color:white;
+    font-family:
+    "Segoe UI",
+    sans-serif;
+}
+
+/* DIAPOSITIVA */
+
+.reveal .slides section{
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(0,255,255,.05),
+        rgba(0,100,255,.05)
+    );
+
+    border:
+    2px solid rgba(0,255,255,.5);
+
+    border-radius:30px;
+
+    box-shadow:
+
+    0 0 20px cyan,
+    0 0 40px cyan,
+    0 0 80px rgba(0,255,255,.5),
+
+    inset 0 0 30px rgba(0,255,255,.1);
+
+    backdrop-filter:blur(10px);
+}
+
+/* TITULOS */
+
+.reveal h1{
+
+    color:white;
+
+    font-size:2.5em;
+
+    text-transform:uppercase;
+
+    letter-spacing:10px;
+
+    text-shadow:
+
+    0 0 10px cyan,
+    0 0 30px cyan,
+    0 0 60px cyan,
+    0 0 120px cyan;
+}
+
+.reveal h2{
+
+    color:#00ffff;
+
+    text-shadow:
+
+    0 0 10px cyan,
+    0 0 30px cyan;
+}
+
+.reveal p,
+.reveal li{
+
+    color:#d8ffff;
+}
+
+/* TARJETAS */
+
+.card{
+
+    background:
+    rgba(0,255,255,.05);
+
+    border:
+    1px solid rgba(0,255,255,.5);
+
+    border-radius:20px;
+
+    padding:20px;
+
+    box-shadow:
+
+    0 0 15px cyan,
+    inset 0 0 15px rgba(0,255,255,.15);
+}
+
+/* CHIPS */
+
+.chip{
+
+    display:inline-block;
+
+    padding:12px 25px;
+
+    margin:8px;
+
+    border-radius:30px;
+
+    color:white;
+
+    border:1px solid cyan;
+
+    box-shadow:
+
+    0 0 10px cyan,
+    0 0 20px cyan;
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+}
+
+/* CÓDIGO */
+
+pre{
+
+    border-radius:20px;
+
+    border:1px solid cyan;
+
+    box-shadow:
+
+    0 0 20px cyan,
+    0 0 40px rgba(0,255,255,.3);
+}
+
+/* BARRA DE PROGRESO */
+
+.reveal .progress{
+
+    color:cyan;
+
+    height:8px;
+
+    box-shadow:
+    0 0 20px cyan;
+}
+#circuit-layer{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:0;
+}
+
+.circuit-line{
+
+    position:absolute;
+
+    background:
+    linear-gradient(
+        90deg,
+        transparent,
+        cyan,
+        transparent
+    );
+
+    box-shadow:
+    0 0 10px cyan,
+    0 0 20px cyan;
+
+}
+
+.horizontal{
+
+    height:2px;
+
+    animation:
+    pulseLine 6s linear infinite;
+}
+
+.vertical{
+
+    width:2px;
+
+    animation:
+    pulseLine 8s linear infinite;
+}
+
+@keyframes pulseLine{
+
+    0%{
+        opacity:.1;
+    }
+
+    50%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:.1;
+    }
+
+}
+
+.signal{
+
+    position:absolute;
+
+    width:10px;
+    height:10px;
+
+    border-radius:50%;
+
+    background:white;
+
+    box-shadow:
+        0 0 5px cyan,
+        0 0 15px cyan,
+        0 0 30px cyan,
+        0 0 60px cyan;
+
+    z-index:1;
+}
+.node{
+
+    position:absolute;
+
+    width:14px;
+    height:14px;
+
+    border-radius:50%;
+
+    background:cyan;
+
+    box-shadow:
+        0 0 10px cyan,
+        0 0 20px cyan,
+        0 0 40px cyan;
+
+    z-index:2;
+}
+.flash{
+
+    animation:
+    reactorFlash .5s ease;
+}
+
+@keyframes reactorFlash{
+
+    0%{
+
+        filter:
+        brightness(1);
+    }
+
+    50%{
+
+        filter:
+        brightness(2.5);
+    }
+
+    100%{
+
+        filter:
+        brightness(1);
+    }
+
+}
+.energy-wave{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(0,255,255,.4),
+        transparent 60%
+    );
+
+    animation:
+    wave 1s ease-out forwards;
+}
+
+@keyframes wave{
+
+    from{
+
+        transform:scale(.1);
+
+        opacity:1;
+    }
+
+    to{
+
+        transform:scale(3);
+
+        opacity:0;
+    }
+
+}
+#hud{
+
+    position:fixed;
+
+    top:20px;
+    right:20px;
+
+    color:cyan;
+
+    font-family:monospace;
+
+    border:1px solid cyan;
+
+    padding:15px;
+
+    box-shadow:
+        0 0 15px cyan;
+
+    z-index:9999;
+
+    background:
+    rgba(0,0,0,.5);
+}
+/* Permitir scroll vertical en diapositivas largas */
+
+.reveal .slides section {
+
+    max-height: 85vh;
+
+    overflow-y: auto;
+
+    overflow-x: hidden;
+
+    padding-right: 15px;
+
+}
+
+/* Barra futurista */
+
+.reveal .slides section::-webkit-scrollbar {
+
+    width: 10px;
+
+}
+
+.reveal .slides section::-webkit-scrollbar-track {
+
+    background: rgba(0,255,255,.05);
+
+    border-radius: 10px;
+
+}
+
+.reveal .slides section::-webkit-scrollbar-thumb {
+
+    background: cyan;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 0 10px cyan,
+        0 0 20px cyan;
+
+}
+
+.reveal .slides section::-webkit-scrollbar-thumb:hover {
+
+    background: white;
+
+}
+/* CONTENEDOR DEL FORMULARIO */
+
+form{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:15px;
+
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+/* INPUTS */
+
+form input{
+
+    background:
+        rgba(0,255,255,.05);
+
+    border:
+        1px solid rgba(0,255,255,.4);
+
+    color:white;
+
+    padding:
+        12px 18px;
+
+    border-radius:12px;
+
+    font-size:18px;
+
+    min-width:180px;
+
+    transition:.3s;
+
+    box-shadow:
+        0 0 10px rgba(0,255,255,.15);
+}
+
+/* AL SELECCIONAR */
+
+form input:focus{
+
+    outline:none;
+
+    border-color:cyan;
+
+    box-shadow:
+
+        0 0 10px cyan,
+        0 0 25px cyan;
+
+    transform:
+        translateY(-2px);
+}
+
+/* PLACEHOLDER */
+
+form input::placeholder{
+
+    color:
+        rgba(200,255,255,.5);
+}
+
+/* BOTON */
+
+form button{
+
+    background:
+        linear-gradient(
+            135deg,
+            #00ffff,
+            #0088ff
+        );
+
+    color:black;
+
+    border:none;
+
+    padding:
+        12px 25px;
+
+    border-radius:12px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    box-shadow:
+
+        0 0 10px cyan,
+        0 0 25px cyan;
+}
+
+/* HOVER */
+
+form button:hover{
+
+    transform:
+
+        translateY(-3px)
+        scale(1.05);
+
+    box-shadow:
+
+        0 0 20px cyan,
+        0 0 40px cyan,
+        0 0 80px cyan;
+}
+
+/* CLICK */
+
+form button:active{
+
+    transform:scale(.95);
+}
