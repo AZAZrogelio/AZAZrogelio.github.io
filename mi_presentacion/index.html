@@ -412,6 +412,148 @@
           </table>
         </div>
       </section>
+
+<!-- Rey -->
+
+      <section>
+        <h2>6.7 Método de Análisis en CA: Nodos y Mallas</h2>
+        <div class="card">
+          <p>
+            Dejamos de usar números reales y empezamos a trabajar con números complejos (fasores e impedancias).
+          </p>
+          <p>
+            En CA, las resistencias, inductores y capacitores se transforman en <strong>impedancias (Z)</strong>, y los voltajes y corrientes se convierten en <strong>fasores (V e I)</strong>.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Método de Nodos en CA</h2>
+        <div class="card">
+          <p>
+            Se basa en la <strong>Ley de Corrientes de Kirchhoff (LCK)</strong>:
+          </p>
+          <p>
+            "La suma algebraica de las corrientes que entran y salen de un nodo es igual a cero."
+          </p>
+          <p>
+            Σ I = 0
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Método de Mallas en CA</h2>
+        <div class="card">
+          <p>
+            Se basa en la <strong>Ley de Voltajes de Kirchhoff (LVK)</strong>:
+          </p>
+          <p>
+            "La suma algebraica de las caídas de voltaje en una trayectoria cerrada (malla) es igual a cero."
+          </p>
+          <p>
+            Σ V = 0
+          </p>
+        </div>
+      </section>
+      <!-- carlo -->
+      <section>
+        <h2>Diseño de Filtros IIR a partir de Filtros Analógicos</h2>
+        <div class="card">
+          <p>
+            Consiste en crear filtros digitales tomando como base filtros analógicos ya conocidos. Estos filtros permiten seleccionar o eliminar determinadas frecuencias de una señal, siendo utilizados en procesamiento de audio, comunicaciones, control y sistemas electrónicos.
+          </p>
+          <p>
+            Para obtener el filtro digital se aplican técnicas matemáticas que transforman el modelo analógico en uno digital manteniendo características similares de respuesta en frecuencia.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>1. ¿Qué es un filtro?</h2>
+        <div class="card">
+          <p>
+            Es un sistema que deja pasar ciertas frecuencias y atenúa o elimina otras.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>2. ¿Qué es un filtro analógico?</h2>
+        <div class="card">
+          <p>
+            Es un circuito electrónico que procesa señales continuas usando componentes como resistencias y capacitores.
+          </p>
+          <p><strong>Fórmula:</strong></p>
+          <p>H(s) = Y(s) / X(s)</p>
+          <p><strong>Donde:</strong></p>
+          <ul>
+            <li><strong>H(s):</strong> función de transferencia.</li>
+            <li><strong>Y(s):</strong> señal de salida.</li>
+            <li><strong>X(s):</strong> señal de entrada.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>3. ¿Qué es un filtro IIR?</h2>
+        <div class="card">
+          <p>
+            (Infinite Impulse Response) Es un filtro digital cuya salida depende de entradas y salidas anteriores.
+          </p>
+          <p><strong>Fórmula:</strong></p>
+          <p>H(z) = Y(z) / X(z)</p>
+          <p><strong>Donde:</strong></p>
+          <ul>
+            <li><strong>H(z):</strong> función de transferencia digital.</li>
+            <li><strong>Y(z):</strong> salida.</li>
+            <li><strong>X(z):</strong> entrada.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>4. Transformación a Digital</h2>
+        <div class="card">
+          <p>
+            Se logra con métodos matemáticos que convierten el modelo analógico en uno digital.
+          </p>
+          <p><strong>Fórmula:</strong></p>
+          <p>s = (2/T) · (1 − z⁻¹) / (1 + z⁻¹)</p>
+          <p><strong>Donde:</strong></p>
+          <ul>
+            <li><strong>s:</strong> variable del sistema analógico.</li>
+            <li><strong>z:</strong> variable del sistema digital.</li>
+            <li><strong>T:</strong> período de muestreo.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>Ejemplos de Filtros</h2>
+        <div class="card">
+          <ul>
+            <li><strong>Filtro pasa-bajas:</strong> deja pasar frecuencias bajas.</li>
+            <li><strong>Filtro pasa-altas:</strong> deja pasar frecuencias altas.</li>
+            <li><strong>Filtro pasa-banda:</strong> deja pasar un rango de frecuencias.</li>
+            <li><strong>Filtro rechaza-banda:</strong> elimina un rango de frecuencias.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>5. Aplicaciones Prácticas</h2>
+        <div class="card">
+          <ul>
+            <li><strong>Audio:</strong> eliminación de ruido (Filtro pasa-bajas, pasa-altas y rechaza-banda).</li>
+            <li><strong>Telecomunicaciones:</strong> selección de señales (Filtro pasa-banda).</li>
+            <li><strong>Sensores generales:</strong> filtrado de datos (Filtro pasa-bajas).</li>
+            <li><strong>Sensores de temperatura:</strong> Filtro pasa-bajas.</li>
+          </ul>
+        </div>
+      </section>
+
+      
       <!-- Beymar -->
       <section>
         <h2>6.9 TRANSFORMACIONES EN FRECUENCIAS</h2>
